@@ -14,7 +14,26 @@
  * }
  */
 class Solution {
-    Queue<TreeNode> queue = new LinkedList<>();
+    int count = 0;
+    public int kthSmallest(TreeNode root, int k) {
+        return findKthSmallest(root, k).val;
+    }
+
+    TreeNode findKthSmallest(TreeNode node, int k){
+        if(node == null)
+            return null;
+
+        TreeNode left =   findKthSmallest(node.left, k);
+        if(left != null) 
+            return left;
+        count++;
+        if(count == k)
+            return node;
+        return findKthSmallest(node.right, k);
+    }
+
+    //brute force solution below
+    /*
     public int kthSmallest(TreeNode root, int k) {
         populateStack(root);
         TreeNode temp = root;
@@ -35,4 +54,5 @@ class Solution {
         populateStack(root.right); 
         return root;
     }
+    */
 }
