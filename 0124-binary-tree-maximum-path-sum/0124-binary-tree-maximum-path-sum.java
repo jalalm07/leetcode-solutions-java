@@ -32,9 +32,7 @@ class Solution {
         right = Math.max(0, right);
 
         int pathSum = left + right + root.val;
-
         ans = Math.max(ans, pathSum);
-
         return Math.max(left, right) + root.val;
     }
 }
