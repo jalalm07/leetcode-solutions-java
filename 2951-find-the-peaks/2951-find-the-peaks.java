@@ -3,11 +3,11 @@ class Solution {
         List<Integer> list = new ArrayList<>();
 
         for(int i=1; i<mountain.length-1; i++){
-            int prev = mountain[i-1];
-            int curr = mountain[i];
-            int next = mountain[i+1];
+            // int prev = mountain[i-1];
+            // int curr = mountain[i];
+            // int next = mountain[i+1];
 
-            if(prev < curr && curr > next)
+            if(mountain[i-1] < mountain[i] && mountain[i] > mountain[i+1])
             list.add(i);
         }
 
