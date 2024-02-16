@@ -11,7 +11,6 @@ class Solution {
                 map.put(nums[i], i);
             }
         }
-        System.out.println(map);
         return result;
         }
     }
