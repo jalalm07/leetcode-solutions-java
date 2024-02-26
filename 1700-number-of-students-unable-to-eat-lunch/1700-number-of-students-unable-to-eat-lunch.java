@@ -6,7 +6,6 @@ class Solution {
 
         Queue<Integer> sandwichQueue = new ArrayDeque<>();
         Arrays.stream(sandwiches).forEach(p-> sandwichQueue.add(p));
-        int studentSwap = 0;
         int maxTry = (students.length) * (sandwiches.length);
 
         while(maxTry != 0){
@@ -19,8 +18,6 @@ class Solution {
             }
             maxTry--;
         }
-        System.out.println(studentQueue);
-        System.out.println(sandwichQueue);
         return studentQueue.size();
     }
 }
