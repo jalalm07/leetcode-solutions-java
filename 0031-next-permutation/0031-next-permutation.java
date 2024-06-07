@@ -1,35 +1,48 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-        int pivot=-1;
-        if(nums.length==1){
-            return ;
-        }
-        for(int i=1;i<nums.length;i++){
-            if(nums[i-1]<nums[i])
-                pivot = i-1;
-        }
-        if(pivot==-1 ){
-            reverse(nums,0);
+        int index = -1;
+        int n = nums.length;
+
+        if(n == 1)
             return;
+
+        for(int i = n -2; i >=0; i--){
+            if(nums[i] < nums[i+1]){
+                index = i;
+                break;
+            }
         }
-        int nextMax=-1;
-        for(int i=pivot+1;i<nums.length;i++){
-            if(nums[i]>nums[pivot]) 
-                nextMax = i; // nextMax will keep on updating until smallestMax is found
+
+        System.out.println(index);
+
+        if(index == -1)
+            reverse(nums, 0, n-1);
+        else{
+        for(int i = n -1; i > index; i--){
+            if(nums[i] > nums[index]){
+                swap(nums, i, index);
+                break;
+            }
         }
-        int temp = nums[pivot];
-        nums[pivot]= nums[nextMax];
-        nums[nextMax]=temp;
-        reverse(nums,pivot+1);
+
+        reverse(nums, index+1, n-1);
+        }
+
     }
-    public void reverse(int[] nums,int s){
-        int e= nums.length-1;
-        while(s<e){
-            int t= nums[s];
-            nums[s]= nums[e];
-            nums[e]= t;
-            s+=1;
-            e-=1;
+
+    private static void reverse(int[] nums, int start, int end){
+        while(start <= end){
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
         }
+    }
+
+    private static void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
