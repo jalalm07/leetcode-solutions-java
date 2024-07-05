@@ -2,7 +2,6 @@ class Solution {
     public int shipWithinDays(int[] weights, int days) {
         int low = Integer.MIN_VALUE;
         int high = 0;
-        int ans = 0;
         for(int i = 0; i < weights.length; i++){
             high += weights[i];
             low = Math.max(low, weights[i]);
@@ -11,7 +10,6 @@ class Solution {
             int mid = (low + high) / 2;
             int daysReq = noOfDaysRequired(weights, mid);
             if(daysReq <= days){
-                ans = mid;
                 high = mid - 1;
             } else low = mid + 1;
         }
