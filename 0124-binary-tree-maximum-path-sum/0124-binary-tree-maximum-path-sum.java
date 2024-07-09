@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    int ans = Integer.MIN_VALUE;
+    int maxSum = Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
         helper(root);
         return ans;
@@ -25,14 +25,15 @@ class Solution {
             return 0;
         }
 
-        int left = helper(root.left);
-        int right = helper(root.right);
+        int leftSum = helper(root.left);
+        int rightSum = helper(root.right);
 
-        left = Math.max(0, left);
-        right = Math.max(0, right);
+        //this is to ignore any negative left sum or right sum
+        leftSum = Math.max(0, leftSum);
+        rightSum = Math.max(0, rightSum);
 
-        int pathSum = left + right + root.val;
-        ans = Math.max(ans, pathSum);
-        return Math.max(left, right) + root.val;
+
+        maxSum = Math.max(maxSum, leftSum + rightSum + root.val);
+        return Math.max(leftSum, rightSum) + root.val;
     }
 }
