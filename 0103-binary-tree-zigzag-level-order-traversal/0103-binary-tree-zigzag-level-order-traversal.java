@@ -18,7 +18,7 @@ class Solution {
         List<List<Integer>> answer = new ArrayList<>();
         if(root == null) return answer;
         boolean reverse = false;
-        Queue<TreeNode> queue = new ArrayDeque<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
             int levelSize = queue.size();
