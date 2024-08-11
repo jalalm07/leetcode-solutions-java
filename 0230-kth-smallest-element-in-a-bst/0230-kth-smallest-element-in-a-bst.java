@@ -15,21 +15,21 @@
  */
 class Solution {
     int count = 0;
+    int ans = -1;
     public int kthSmallest(TreeNode root, int k) {
-        return findKthSmallest(root, k).val;
+        inorder(root, k);
+        return ans;
     }
 
-    TreeNode findKthSmallest(TreeNode node, int k){
-        if(node == null)
-            return null;
-
-        TreeNode left =   findKthSmallest(node.left, k);
-        if(left != null) 
-            return left;
+    public void inorder(TreeNode root, int k){
+        if(root == null) return;
+        inorder(root.left, k);
         count++;
-        if(count == k)
-            return node;
-        return findKthSmallest(node.right, k);
+        if(count == k) {
+            ans = root.val;
+            return;
+        }
+        inorder(root.right, k);
     }
 
     //brute force solution below
