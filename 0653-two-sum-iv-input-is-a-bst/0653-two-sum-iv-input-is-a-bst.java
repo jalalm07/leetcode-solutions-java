@@ -16,14 +16,23 @@
 class Solution {
     
     public boolean findTarget(TreeNode root, int k) {
-        Set<Integer> set = new HashSet<>();
-        return dfs(root, set, k);
+        return dfs(root,root,k);
     }
+    public boolean dfs(TreeNode current, TreeNode root, int sum){
+        if(current == null) return false;
 
-    public boolean dfs(TreeNode root, Set<Integer> set, int k){
-        if(root==null) return false;
-        if(set.contains(k - root.val)) return true;
-        set.add(root.val);
-        return dfs(root.left, set, k) || dfs(root.right, set, k);
+        int compliment = sum-current.val;
+        if(search(root,current,compliment)){
+            return true;
+        }
+        return dfs(current.left,root,sum) || dfs(current.right,root,sum);
+    }
+    public boolean search(TreeNode root, TreeNode exclude, int target){
+        if(root == null) return false;
+
+        if(root.val == target && root == exclude) return false;
+        if(root.val == target) return true;
+        if(root.val>target) return search(root.left,exclude,target);
+        return search(root.right,exclude,target);
     }
 }
