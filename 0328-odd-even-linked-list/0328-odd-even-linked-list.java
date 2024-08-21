@@ -13,16 +13,15 @@ class Solution {
         if(head == null || head.next == null) return head;
         ListNode dummyOdd = head;
         ListNode dummyEven = head.next;
-        ListNode dummyOddTemp = dummyOdd;
         ListNode dummyEvenTemp = dummyEven;
 
-        while(dummyEvenTemp != null && dummyEvenTemp.next != null && dummyOddTemp.next!= null){
-           dummyOddTemp.next = dummyOddTemp.next.next;
+        while(dummyEvenTemp != null && dummyEvenTemp.next != null && dummyOdd.next!= null){
+           dummyOdd.next = dummyOdd.next.next;
            dummyEvenTemp.next = dummyEvenTemp.next.next;
-           dummyOddTemp = dummyOddTemp.next;
+           dummyOdd = dummyOdd.next;
            dummyEvenTemp = dummyEvenTemp.next;
         }
-        dummyOddTemp.next = dummyEven;
+        dummyOdd.next = dummyEven;
         return head;
     }
 }
