@@ -23,7 +23,6 @@ class Solution {
            dummyEvenTemp = dummyEvenTemp.next;
         }
         dummyOddTemp.next = dummyEven;
-        return dummyOdd;
-        
+        return dummyOddTemp;
     }
 }
