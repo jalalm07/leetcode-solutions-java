@@ -33,19 +33,16 @@ class Solution {
         return true;
     }
 
-    public ListNode reverse(ListNode head ){
+    public ListNode reverse(ListNode head){
         ListNode prev = null;
         ListNode curr = head;
-        ListNode temp = head.next;
-
         while(curr!=null){
+            ListNode temp = curr.next;
             curr.next = prev;
             prev = curr;
             curr = temp;
-            if(temp != null) temp = temp.next;
         }
-        head = prev;
-        return head;
 
+        return prev;
     }
 }
