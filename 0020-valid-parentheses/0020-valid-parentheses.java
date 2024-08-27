@@ -7,13 +7,13 @@ class Solution {
                 chStack.push(ch);
             }
             else if(ch == ')'){
-                if(chStack.pop() != '(') return false;
+                if(chStack.isEmpty() || chStack.pop() != '(') return false;
             }
             else if(ch == ']'){
-                if(chStack.pop() != '[') return false;
+                if(chStack.isEmpty() || chStack.pop() != '[') return false;
             }
             else if(ch == '}'){
-                if(chStack.pop() != '{') return false;
+                if(chStack.isEmpty() || chStack.pop() != '{') return false;
             }
         }
         return chStack.isEmpty();
