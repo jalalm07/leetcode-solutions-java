@@ -3,18 +3,20 @@ class Solution {
         Stack<Character> chStack = new Stack<>();
         char[] chArr = s.toCharArray();
         for(char ch : chArr){
-            if(ch == '(' || ch == '[' || ch == '{'){
+            if(ch == '{' || ch == '[' || ch == '(')
                 chStack.push(ch);
-            }
-            else if(ch == ')'){
-                if(chStack.isEmpty() || chStack.pop() != '(') return false;
+            else if(ch == '}'){
+                if(chStack.isEmpty()) return false;
+               if(chStack.pop() != '{') return false;
             }
             else if(ch == ']'){
-                if(chStack.isEmpty() || chStack.pop() != '[') return false;
-            }
-            else if(ch == '}'){
-                if(chStack.isEmpty() || chStack.pop() != '{') return false;
-            }
+               if(chStack.isEmpty()) return false;
+               if(chStack.pop() != '[') return false;
+            } 
+            else if(ch == ')'){
+                 if(chStack.isEmpty()) return false;
+               if(chStack.pop() != '(') return false;
+            }     
         }
         return chStack.isEmpty();
     }
