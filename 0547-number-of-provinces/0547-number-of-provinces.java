@@ -16,7 +16,7 @@ class Solution {
         }
 
         for(int i =0; i < isConnected.length; i++){
-            if(visited[i] == 0){
+            if(visited[i] != 1){
                 count++;
                 dfs(adjL, visited, i);
             }
