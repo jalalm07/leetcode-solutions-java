@@ -7,7 +7,7 @@ class Solution {
         int n = adj.length;
         vis = new boolean[n];
         int ans = 0;
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; i++) {
             if (!vis[i]) {
                 dfs(i);
                 ++ans;
