@@ -10,7 +10,7 @@ class Solution {
         for (int i = 0; i < n; i++) {
             if (!vis[i]) {
                 dfs(i);
-                ++ans;
+                ans++;
             }
         }
         return ans;
