@@ -22,13 +22,13 @@ class Solution {
                     queue.add(new pair(i,j,0));
                     vis[i][j] = 2;
                 }
-                if(grid[i][j] == 1) cntFresh++;
+                else if(grid[i][j] == 1) cntFresh++;
             }
         }
 
         int cnt = 0;
         int tm = 0;
-        int[] drow = {-1, 0, +1, 0};
+        int[] drow = {-1, 0, 1, 0};
         int[] dcol = {0, 1, 0, -1};
         while(!queue.isEmpty()){
             int r = queue.peek().row;
