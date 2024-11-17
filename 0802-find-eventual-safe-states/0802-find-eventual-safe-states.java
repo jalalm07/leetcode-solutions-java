@@ -25,15 +25,14 @@ class Solution {
         for(int adj: graph[node]){
             if(vis[adj] == 0){
                 if(dfs(adj, vis, pathVis, check, graph) == true){
-                    check[node] = 0; 
+                    //check[node] = 0; 
                     return true;
                 } 
             } else if(pathVis[adj] == 1){
-                check[node] = 0; 
+                //check[node] = 0; 
                 return true;
             }
         }
-
         check[node] = 1;
         pathVis[node] = 0;
         return false;
