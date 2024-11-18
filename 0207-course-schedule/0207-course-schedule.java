@@ -6,17 +6,19 @@ class Solution {
             list.add(new ArrayList<>());
         }
 
+        int[] inDegree = new int[numCourses];
         for(int i = 0; i < m; i++){
             list.get(prerequisites[i][1]).add(prerequisites[i][0]);
+            inDegree[prerequisites[i][0]]++;
         }
 
-        int[] inDegree = new int[numCourses];
+        
 
-        for(int i = 0; i < numCourses; i++){
-            for(int n: list.get(i)){
-                inDegree[n]++;
-            }
-        }
+        // for(int i = 0; i < numCourses; i++){
+        //     for(int n: list.get(i)){
+        //         inDegree[prerequisites[i][0]]++;
+        //     }
+        // }
 
         Queue<Integer> queue = new LinkedList<>();
 
