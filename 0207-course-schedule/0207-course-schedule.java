@@ -12,8 +12,6 @@ class Solution {
             inDegree[prerequisites[i][0]]++;
         }
 
-        
-
         // for(int i = 0; i < numCourses; i++){
         //     for(int n: list.get(i)){
         //         inDegree[prerequisites[i][0]]++;
@@ -30,8 +28,8 @@ class Solution {
             int node = queue.remove();
             cnt++;
             for(int adjN: list.get(node)){
-                inDegree[adjN]--;
-                if(inDegree[adjN] == 0) queue.add(adjN);
+                //inDegree[adjN]--;
+                if(--inDegree[adjN] == 0) queue.add(adjN);
             }
         }
 
