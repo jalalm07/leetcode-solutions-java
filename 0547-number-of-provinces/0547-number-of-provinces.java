@@ -1,27 +1,23 @@
 class Solution {
-    private int[][] adj;
-    private boolean[] vis;
 
     public int findCircleNum(int[][] isConnected) {
-        adj = isConnected;
-        int n = adj.length;
-        vis = new boolean[n];
-        int ans = 0;
-        for (int i = 0; i < n; i++) {
-            if (!vis[i]) {
-                dfs(i);
-                ans++;
+       int[] vis = new int[isConnected.length];
+       int count = 0;
+        for(int i = 0; i < isConnected.length; i++){
+            if(vis[i] == 0){
+                dfs(i, vis, isConnected);
+                count++;
             }
         }
-        return ans;
+        return count;
     }
 
-    private void dfs(int i) {
-        vis[i] = true;
-        for (int j = 0; j < adj.length; j++) {
-            if (!vis[j] && adj[i][j] == 1) {
-                dfs(j);
+    private void dfs(int i, int[] vis, int[][] isConnected) {
+       vis[i] = 1;
+       for(int j = 0; j < isConnected[i].length; j++){
+            if(vis[j] == 0 && isConnected[i][j] == 1){
+                dfs(j, vis, isConnected);
             }
-        }
+       }
     }
 }
