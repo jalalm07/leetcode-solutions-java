@@ -6,7 +6,7 @@ class Solution {
         int maxR = height[r];
         int ans = 0;
         while(l < r){
-            if(maxL < maxR){
+            if(maxL <= maxR){
                   l++;
                 //if(maxL - height[l] > 0){
                     maxL = Math.max(maxL, height[l]);
