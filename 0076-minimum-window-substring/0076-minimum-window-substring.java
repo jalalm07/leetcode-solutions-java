@@ -11,6 +11,7 @@ class Solution {
 
         int l = 0;
         int r = t.length() -1;
+        int[] ansIndex = new int[2];
         String ans = "";
         int minWindow = Integer.MAX_VALUE;
 
@@ -18,7 +19,9 @@ class Solution {
             if(matches(countT, countS)){
                 if(r - l + 1 < minWindow){
                     minWindow = r - l + 1;
-                    ans = s.substring(l, r + 1);
+                    //ans = s.substring(l, r + 1);
+                    ansIndex[0] = l;
+                    ansIndex[1] = r + 1;
                 }
                 countS.put(s.charAt(l), countS.get(s.charAt(l)) - 1);
                 l++;
@@ -28,7 +31,7 @@ class Solution {
                 countS.put(s.charAt(r), countS.getOrDefault(s.charAt(r),0) + 1);
             }
         }
-        return ans;
+        return s.substring(ansIndex[0], ansIndex[1]);
     }
 
     private static boolean matches(Map<Character, Integer> countT, Map<Character, Integer> countS){
