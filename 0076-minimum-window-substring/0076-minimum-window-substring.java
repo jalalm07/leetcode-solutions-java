@@ -15,8 +15,6 @@ class Solution {
         int minWindow = Integer.MAX_VALUE;
 
         while(r < s.length() && l <= s.length() - t.length()){
-            //System.out.println("Inside");
-            //System.out.println(countS);
             if(matches(countT, countS)){
                 if(r - l + 1 < minWindow){
                     minWindow = r - l + 1;
