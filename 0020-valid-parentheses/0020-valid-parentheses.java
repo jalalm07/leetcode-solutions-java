@@ -1,6 +1,6 @@
 class Solution {
     public boolean isValid(String s) {
-        
+        /*
        Stack<Character> stack = new Stack<>();
         for(char ch: s.toCharArray()){
             if(ch == '{' || ch == '[' || ch == '('){
@@ -15,8 +15,8 @@ class Solution {
             } 
         }
         return stack.isEmpty();
-
-        /*Stack<Character> chStack = new Stack<>();
+*/
+        Stack<Character> chStack = new Stack<>();
         char[] chArr = s.toCharArray();
         for(char ch : chArr){
             if(ch == '(' || ch == '[' || ch == '{'){
@@ -33,7 +33,7 @@ class Solution {
             }
         }
         return chStack.isEmpty();
-        */
+        
 
     }
 }
