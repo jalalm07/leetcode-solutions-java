@@ -1,17 +1,20 @@
 class Solution {
     public boolean isValid(String s) {
         
-        char[] cache = new char[s.length()];
-        int pt = 0;
-        for (char c : s.toCharArray()) {
-            if (c=='(') cache[pt++] = ')';
-            else if (c=='{') cache[pt++] = '}';
-            else if (c=='[') cache[pt++] = ']';
-            else {
-                if (pt == 0 || cache[--pt] != c) return false;
-            }
+       Stack<Character> stack = new Stack<>();
+        for(char ch: s.toCharArray()){
+            if(ch == '{' || ch == '[' || ch == '('){
+                stack.push(ch);
+            } else if((ch == '}' || ch == ']' || ch == ')') && stack.isEmpty()) return false;
+            else if(ch == '}' && !stack.isEmpty() && stack.pop() != '{'){
+                return false;
+            } else if(ch == ']' && !stack.isEmpty() && stack.pop() != '['){
+                return false;
+            } else if(ch == ')' && !stack.isEmpty() && stack.pop() != '('){
+                return false;
+            } 
         }
-        return pt == 0;
+        return stack.isEmpty();
 
         /*Stack<Character> chStack = new Stack<>();
         char[] chArr = s.toCharArray();
