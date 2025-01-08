@@ -1,6 +1,7 @@
 class Solution {
     public boolean isValid(String s) {
-          char[] cache = new char[s.length()];
+        
+        char[] cache = new char[s.length()];
         int pt = 0;
         for (char c : s.toCharArray()) {
             if (c=='(') cache[pt++] = ')';
@@ -11,5 +12,25 @@ class Solution {
             }
         }
         return pt == 0;
+
+        /*Stack<Character> chStack = new Stack<>();
+        char[] chArr = s.toCharArray();
+        for(char ch : chArr){
+            if(ch == '(' || ch == '[' || ch == '{'){
+                chStack.push(ch);
+            }
+            else if(ch == ')'){
+                if(chStack.isEmpty() || chStack.pop() != '(') return false;
+            }
+            else if(ch == ']'){
+                if(chStack.isEmpty() || chStack.pop() != '[') return false;
+            }
+            else if(ch == '}'){
+                if(chStack.isEmpty() || chStack.pop() != '{') return false;
+            }
+        }
+        return chStack.isEmpty();
+        */
+
     }
 }
