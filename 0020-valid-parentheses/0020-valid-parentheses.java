@@ -6,11 +6,11 @@ class Solution {
             if(ch == '{' || ch == '[' || ch == '('){
                 stack.push(ch);
             } else if((ch == '}' || ch == ']' || ch == ')') && stack.isEmpty()) return false;
-            else if(ch == '}' && !stack.isEmpty() && stack.pop() != '{'){
+            else if(ch == '}' && stack.pop() != '{'){
                 return false;
-            } else if(ch == ']' && !stack.isEmpty() && stack.pop() != '['){
+            } else if(ch == ']' && stack.pop() != '['){
                 return false;
-            } else if(ch == ')' && !stack.isEmpty() && stack.pop() != '('){
+            } else if(ch == ')' && stack.pop() != '('){
                 return false;
             } 
         }
