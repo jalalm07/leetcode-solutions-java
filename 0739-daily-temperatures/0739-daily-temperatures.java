@@ -3,16 +3,16 @@ class Solution {
         int n = temperatures.length;
         int[] ans = new int[n];
 
-        // Stack<Integer> stack = new Stack<>();
-        // for(int i =0; i < n; i++){
-        //     while(!stack.isEmpty() && temperatures[stack.peek()] < temperatures[i] ){
-        //         ans[stack.peek()] = i - stack.pop();
-        //     }
-        //     stack.push(i);
-        // }
+        Stack<Integer> stack = new Stack<>();
+        for(int i =0; i < n; i++){
+            while(!stack.isEmpty() && temperatures[stack.peek()] < temperatures[i] ){
+                ans[stack.peek()] = i - stack.pop();
+            }
+            stack.push(i);
+        }
 
 
-
+/*
         Stack<int[]> stack = new Stack<>();
         int i = 1;
         stack.push(new int[] {temperatures[0], 0});
@@ -29,7 +29,7 @@ class Solution {
             }
             i++;
         }while(i < n);
-
+*/
         // for(int i = 0; i < n - 1; i++){
         //     for(int j = i + 1; j < n; j++){
         //         if(temperatures[j] > temperatures[i]){
