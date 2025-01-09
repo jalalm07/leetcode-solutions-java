@@ -30,14 +30,14 @@ class Solution {
             i++;
         }while(i < n);
 
-        for(int i = 0; i < n - 1; i++){
-            for(int j = i + 1; j < n; j++){
-                if(temperatures[j] > temperatures[i]){
-                    ans[i] = j - i;
-                    break;
-                }
-            }
-        }
+        // for(int i = 0; i < n - 1; i++){
+        //     for(int j = i + 1; j < n; j++){
+        //         if(temperatures[j] > temperatures[i]){
+        //             ans[i] = j - i;
+        //             break;
+        //         }
+        //     }
+        // }
         return ans;
     }
 }
