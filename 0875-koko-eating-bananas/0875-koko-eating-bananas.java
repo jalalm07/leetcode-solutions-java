@@ -1,8 +1,8 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
-        Arrays.sort(piles);
+        //Arrays.sort(piles);
         int l = 1;
-        int r = piles[piles.length - 1];
+        int r = findMax(piles);;
         int ans = Integer.MAX_VALUE;
         while(l <= r){
             int mid = (l + r) / 2;
@@ -18,5 +18,13 @@ class Solution {
             } 
         }
         return ans;
+    }
+
+    private static int findMax(int[] piles){
+        int max = Integer.MIN_VALUE;
+        for(int n: piles){
+            if(n > max) max = n;
+        }
+        return max;
     }
 }
