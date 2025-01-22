@@ -28,7 +28,7 @@ class Solution {
                 if(node.left != null) queue.add(node.left);
                 if(node.right != null) queue.add(node.right);
             }
-            if(!levelList.isEmpty()) result.add(levelList);
+            result.add(levelList);
         }
         return result;
     }
