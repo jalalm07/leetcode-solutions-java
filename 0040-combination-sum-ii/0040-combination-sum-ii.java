@@ -1,28 +1,29 @@
 class Solution {
-    List<List<Integer>> result = new ArrayList<>();
+    private static List<List<Integer>> res = new ArrayList<>();
+
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        res.clear();
         Arrays.sort(candidates);
-        List<Integer> subset = new ArrayList<>();
-        dfs(candidates, 0, target, subset);
-        return result;
+        dfs(0, new ArrayList<>(), 0, candidates, target);
+        return res;
     }
 
-    private void dfs(int[] nums, int i, int target, List<Integer> subset){
-
-        if(target == 0){
-            result.add(new ArrayList<>(subset));
+    private static void dfs(int idx, List<Integer> path, int cur, int[] candidates, int target) {
+        if (cur == target) {
+            res.add(new ArrayList<>(path));
             return;
         }
-        if(i >= nums.length || target < 0){
-            return;
-        }
-        subset.add(nums[i]);
-        dfs(nums, i + 1, target - nums[i], subset);
+        for (int i = idx; i < candidates.length; i++) {
+            if (i > idx && candidates[i] == candidates[i - 1]) {
+                continue;
+            }
+            if (cur + candidates[i] > target) {
+                break;
+            }
 
-        subset.remove(subset.size() - 1);
-        while(i + 1 < nums.length && nums[i] == nums[i + 1]){
-            i++;
+            path.add(candidates[i]);
+            dfs(i + 1, path, cur + candidates[i], candidates, target);
+            path.remove(path.size() - 1);
         }
-        dfs(nums, i + 1, target, subset);
     }
 }
