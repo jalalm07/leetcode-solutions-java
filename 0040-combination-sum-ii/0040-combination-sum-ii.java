@@ -8,15 +8,13 @@ class Solution {
     }
 
     private void dfs(int[] nums, int i, int target, List<Integer> subset){
+        
         if(i >= nums.length || target < 0){
             if(target == 0){
             result.add(new ArrayList<>(subset));}
             return;
         }
-        if(target == 0){
-            result.add(new ArrayList<>(subset));
-            return;
-        }
+        
 
         subset.add(nums[i]);
         dfs(nums, i + 1, target - nums[i], subset);
