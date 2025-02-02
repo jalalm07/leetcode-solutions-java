@@ -1,27 +1,32 @@
 class Solution {
+ private static final int[][] directions = {{1, 0}, {-1, 0}, 
+                                               {0, 1}, {0, -1}};
+    
     public int numIslands(char[][] grid) {
-        int m = grid.length;
-        int n = grid[0].length;
-        int[][] vis = new int[m][n];
-        int count = 0;
-        for(int i = 0; i < m; i++){
-            for(int j = 0; j < n; j++){
-                if(vis[i][j] != 1 && grid[i][j] == '1'){
-                    count++;
-                    dfs(grid, vis, i, j, m, n);
+        int ROWS = grid.length, COLS = grid[0].length;
+        int islands = 0;
+        
+        for (int r = 0; r < ROWS; r++) {
+            for (int c = 0; c < COLS; c++) {
+                if (grid[r][c] == '1') {
+                    dfs(grid, r, c);
+                    islands++;
                 }
             }
         }
-        return count;
+        
+        return islands;
     }
-
-    private void dfs(char[][] grid, int[][] vis, int i, int j, int m, int n){
-        if(i < m && i >= 0 && j >= 0 && j < n && vis[i][j] != 1 && grid[i][j] == '1'){
-            vis[i][j] = 1;
-            dfs(grid, vis, i, j + 1, m, n);
-            dfs(grid, vis, i, j - 1, m, n);
-            dfs(grid, vis, i + 1, j, m, n);
-            dfs(grid, vis, i - 1, j, m, n);
+    
+    private void dfs(char[][] grid, int r, int c) {
+        if (r < 0 || c < 0 || r >= grid.length || 
+            c >= grid[0].length || grid[r][c] == '0') {
+            return;
+        }
+        
+        grid[r][c] = '0';
+        for (int[] dir : directions) {
+            dfs(grid, r + dir[0], c + dir[1]);
         }
     }
 }
