@@ -5,7 +5,7 @@ class Solution {
             adjList.add(new ArrayList<>());
         }
         for(int[] edge: edges){
-            boolean[] visited = new boolean[edges.length];
+            boolean[] visited = new boolean[edges.length + 1];
             int u = edge[0];
             int v= edge[1];
             adjList.get(u).add(v);
@@ -18,8 +18,8 @@ class Solution {
     }
 
     private boolean dfs(int node, int parent, ArrayList<ArrayList<Integer>> adjList, boolean[] visited){
-        if(visited[node -1]) return true;
-        visited[node - 1] = true;
+        if(visited[node]) return true;
+        visited[node] = true;
         for(int adj: adjList.get(node)){
             if(adj == parent) continue;
             if(dfs(adj, node, adjList, visited)) return true;
