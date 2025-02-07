@@ -4,9 +4,6 @@ class Solution {
         for(int i = 0; i <= edges.length; i++){
             adjList.add(new ArrayList<>());
         }
-
-        int[] result = new int[2];
-        Set<Integer> set = new HashSet<>();
         for(int[] edge: edges){
             boolean[] visited = new boolean[edges.length];
             int u = edge[0];
@@ -17,7 +14,7 @@ class Solution {
                 return edge;
             }
         }
-        return result;
+        return new int[2];
     }
 
     private boolean dfs(int node, int parent, ArrayList<ArrayList<Integer>> adjList, boolean[] visited){
