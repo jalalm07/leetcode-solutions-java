@@ -1,37 +1,32 @@
 class Solution {
-
-    private class pair{
-        private int time;
-        private int node;
-
-        public pair(int time, int node){
-            this.time = time;
-            this.node = node;
-        }
-    }
     public int networkDelayTime(int[][] times, int n, int k) {
-        List<List<Integer>> adjList = new ArrayList<>();
-        for(int i = 1; i <= n; i++){
-            adjList.add(new ArrayList<>());
-        }
+        Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
         
-        Queue<pair> queue = new LinkedList<>();
         for(int[] time: times){
-            adjList.get(time[0] - 1).add(time[1] - 1);
+            map.putIfAbsent(time[0], new HashMap<>());
+            map.get(time[0]).put(time[1], time[2]);
         }
-        System.out.println(adjList);
-        queue.add(new pair(0, k - 1));
+
+        Queue<int[]> queue = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+        queue.add(new int[]{0, k});
+
         
         int count = 0;
         int minTime = 0;
+        boolean[] visited = new boolean[n+1];
         while(!queue.isEmpty()){
-            int time = queue.peek().time;
-            int node = queue.peek().node;
-            minTime = Math.max(minTime, time);
+            int time = queue.peek()[0];
+            int node = queue.peek()[1];
             queue.remove();
+            if(visited[node]) continue;
+            visited[node] = true;
+            minTime = time;
+  
             count++;
-            for(int adj: adjList.get(node)){
-                queue.add(new pair(time + 1, adj));
+            if(map.containsKey(node)){
+                for(int next: map.get(node).keySet()){
+                    queue.add(new int[]{time + map.get(node).get(next), next});
+                }
             }
         }
 
