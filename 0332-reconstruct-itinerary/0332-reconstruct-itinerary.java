@@ -5,7 +5,7 @@ class Solution {
             map.putIfAbsent(ticket.get(0), new PriorityQueue<>());
             map.get(ticket.get(0)).add(ticket.get(1));
         }
-        List<String> result = new ArrayList<>();
+        LinkedList<String> result = new LinkedList<>();
         dfs(map, "JFK", result);
         return result;
     }
