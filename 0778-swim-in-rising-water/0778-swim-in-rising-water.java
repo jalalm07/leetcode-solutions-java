@@ -12,7 +12,7 @@ class Solution {
     }
     int[][] directions = {{-1,0},{1,0},{0,1},{0,-1}};
     private void dfs(int[][] grid, int i, int j, int time, Set<Integer> set){
-        if(i < 0 || i > grid.length - 1 || j < 0 || j > grid[0].length - 1 || 
+        if(i < 0 || i > grid.length - 1 || j < 0 || j > grid.length - 1 || 
                 grid[i][j] > time || set.contains(i*grid.length+j)) 
         return;
         set.add(i*grid.length+j);
