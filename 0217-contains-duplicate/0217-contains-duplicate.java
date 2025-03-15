@@ -1,8 +1,8 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        Arrays.sort(nums);
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] == nums[i - 1]) {
+        Set<Integer> set  = new HashSet<>();
+        for(int n: nums){
+            if(!set.add(n)){
                 return true;
             }
         }
