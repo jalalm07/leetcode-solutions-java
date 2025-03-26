@@ -10,6 +10,14 @@
  *         this.val = val;
  *         this.left = left;
  *         this.right = right;
+
+        1
+       / \
+      2   3
+       \   \
+        5   4
+
+
  *     }
  * }
  */
